@@ -115,6 +115,16 @@ function _s_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
+/**
+* Allow WP to store svg image in media
+*/
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
 add_action( 'wp_enqueue_scripts', '_s_scripts' );
 
 /**
